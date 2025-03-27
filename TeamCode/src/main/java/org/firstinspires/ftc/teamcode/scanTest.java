@@ -23,10 +23,6 @@ public class scanTest extends LinearOpMode {
         telemetry.update();
         waitForStart();
 
-
-
-
-
         while (opModeIsActive()) {
           telemetry.addData("", outputDistance(distanceSensor));
             }
