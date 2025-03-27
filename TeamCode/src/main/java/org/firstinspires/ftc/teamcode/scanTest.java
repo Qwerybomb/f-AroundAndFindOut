@@ -8,17 +8,18 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 @TeleOp (name="AdvancedAutoBasketSpike", group="Robot")
 public class scanTest extends LinearOpMode {
     private DistanceSensor DistanceSensor;
-
+    String distanceHolder = "";
     public void runOpMode() {
         DistanceSensor = hardwareMap.get(DistanceSensor.class, "distance_sensor");
         telemetry.addData("Wai", "ting");
         telemetry.update();
         waitForStart();
         while (opModeIsActive()) {
-            DistanceSensor.getDistance(DistanceUnit.MM);
+            distanceHolder = "";
            for (int i = 0; i == (DistanceSensor.getDistance(DistanceUnit.MM)); i++) {
-                telemetry.addData("", "|");
+               distanceHolder = distanceHolder + "|";
            }
+           telemetry.addData("", distanceHolder);
           telemetry.update();
             }
     }
