@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.DistanceSensor;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
-@TeleOp (name="AdvancedAutoBasketSpike", group="Robot")
+@TeleOp (name="AppleVisionPro", group="Robot")
 public class scanTest extends LinearOpMode {
     private DistanceSensor distanceSensor;
 
