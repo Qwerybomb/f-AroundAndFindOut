@@ -29,10 +29,6 @@ public class scanTest extends LinearOpMode {
                 .map(String::valueOf)
                 .collect(Collectors.toList());
         return String.join("", stringList);
-//       UnaryOperator<String> replaceMap = n -> {
-//            return "|";};
-//        list.replaceAll(replaceMap);
-//        return String.join("", list);
     }
     public void runOpMode() {
         DistanceSensor distanceSensor = hardwareMap.get(DistanceSensor.class, "distance_sensor");
