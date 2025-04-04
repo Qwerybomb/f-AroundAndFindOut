@@ -4,11 +4,13 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.UnaryOperator;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 @TeleOp (name="AppleVisionPro", group="Robot")
 public class scanTest extends LinearOpMode {
@@ -21,12 +23,16 @@ public class scanTest extends LinearOpMode {
         return distanceHolder.toString();
     }
     public static String fastOutputDistance(DistanceSensor D) {
-        String Distance = String.valueOf(D.getDistance(DistanceUnit.CM));
-        List<String> list = Arrays.asList(Distance.split(""));
-        UnaryOperator<String> replaceMap = n -> {
-            return "|";};
-        list.replaceAll(replaceMap);
-
+        int length = (int) D.getDistance(DistanceUnit.CM);
+        ArrayList<Character> list = new ArrayList<>(Collections.nCopies(length, '|'));
+        List<String> stringList = list.stream()
+                .map(String::valueOf)
+                .collect(Collectors.toList());
+        return String.join("", stringList);
+//       UnaryOperator<String> replaceMap = n -> {
+//            return "|";};
+//        list.replaceAll(replaceMap);
+//        return String.join("", list);
     }
     public void runOpMode() {
         DistanceSensor distanceSensor = hardwareMap.get(DistanceSensor.class, "distance_sensor");
@@ -35,7 +41,7 @@ public class scanTest extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive()) {
-          telemetry.addData("Dist", outputDistance(distanceSensor));
+          telemetry.addData("Dist", fastOutputDistance(distanceSensor));
           telemetry.addData("distanceInCM", distanceSensor.getDistance(DistanceUnit.CM));
           telemetry.update();
             }
