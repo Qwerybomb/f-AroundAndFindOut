@@ -25,7 +25,7 @@ public class scanTest extends LinearOpMode {
     public static String fastOutputDistance(DistanceSensor D) {
         int length = (int) D.getDistance(DistanceUnit.CM);
         ArrayList<Character> list = new ArrayList<>(Collections.nCopies(length, '|'));
-        List<String> stringList = list.stream()
+        List<String> stringList = list.parallelStream()
                 .map(String::valueOf)
                 .collect(Collectors.toList());
         return String.join("", stringList);
