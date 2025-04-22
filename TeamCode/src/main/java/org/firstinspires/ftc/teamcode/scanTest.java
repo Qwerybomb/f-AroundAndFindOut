@@ -15,13 +15,6 @@ import java.util.stream.Collectors;
 @TeleOp (name="AppleVisionPro", group="Robot")
 public class scanTest extends LinearOpMode {
 
-    public static String outputDistance(DistanceSensor Dist) {
-        StringBuilder distanceHolder = new StringBuilder();
-        for (int i = 0; i < (Dist.getDistance(DistanceUnit.CM)); i++) {
-            distanceHolder.append('|');
-        }
-        return distanceHolder.toString();
-    }
     public static String fastOutputDistance(DistanceSensor D) {
         int length = (int) D.getDistance(DistanceUnit.CM);
         ArrayList<Character> list = new ArrayList<>(Collections.nCopies(length, '|'));
